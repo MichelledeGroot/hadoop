@@ -15,7 +15,7 @@ library(rmr2)
 setwd("/home/michelle/Documents/hadoep/")
 gdp <- read.csv("data/avocado.csv")
 head(gdp)
-
+# 
 hdfs.init()
 gdp.values <- to.dfs(gdp)
 
@@ -23,8 +23,8 @@ localData <- "data/avocado.csv"
 hdfs.mkdir("/data")
 hdfs.put(localData, "/data/avocado.csv")
 
-calc = mapreduce(input = gdp.values()[3],
+calc = mapreduce(input = gdp.values,
                  map = function(k, v) cbind(v, 2*v))
 
-from.dfs(calc)
+
 
